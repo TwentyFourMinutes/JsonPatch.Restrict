@@ -24,7 +24,7 @@ namespace JsonPatch.Restrict
         /// <inheritdoc/>
         protected override bool TryGetJsonProperty(object target, IContractResolver contractResolver, string segment, out JsonProperty jsonProperty)
         {
-            if (contractResolver.ResolveContract(target.GetType()) is JsonObjectContract jsonObjectContract)
+            if (!string.IsNullOrEmpty(segment) && contractResolver.ResolveContract(target.GetType()) is JsonObjectContract jsonObjectContract)
             {
                 for (int i = 0; i < jsonObjectContract.Properties.Count; i++)
                 {

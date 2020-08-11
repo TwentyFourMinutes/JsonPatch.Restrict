@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JsonPatch.Restrict</name>
+    </assembly>
+    <members>
+        <member name="T:JsonPatch.Restrict.JsonPatchDocumentExtensions">
+            <summary>
+            Contains restriction extensions for the <see cref="T:Microsoft.AspNetCore.JsonPatch.JsonPatchDocument"/> and the <see cref="T:Microsoft.AspNetCore.JsonPatch.JsonPatchDocument`1"/> classes.
+            </summary>
+        </member>
+        <member name="M:JsonPatch.Restrict.JsonPatchDocumentExtensions.ApplyToWithRestrictions(Microsoft.AspNetCore.JsonPatch.JsonPatchDocument,System.Object,System.String[])">
+            <summary>
+            Applies the <see cref="T:Microsoft.AspNetCore.JsonPatch.JsonPatchDocument"/> to the provided object, only allowing changes to the provided property.
+            </summary>
+            <param name="document">The patch to apply.</param>
+            <param name="objectToApplyTo">The object to apply the patch to.</param>
+            <param name="allowedProperties">An array containing all properties which are allowed to be changed by JSON Patch.</param>
+        </member>
+        <member name="M:JsonPatch.Restrict.JsonPatchDocumentExtensions.ApplyToWithRestrictions(Microsoft.AspNetCore.JsonPatch.JsonPatchDocument,System.Object,System.Action{Microsoft.AspNetCore.JsonPatch.JsonPatchError},System.String[])">
+            <summary>
+            Applies the <see cref="T:Microsoft.AspNetCore.JsonPatch.JsonPatchDocument"/> to the provided object, only allowing changes to the provided property.
+            </summary>
+            <param name="document">The patch to apply.</param>
+            <param name="objectToApplyTo">The object to apply the patch to.</param>
+            <param name="logErrorAction">An action to handle logging any errors.</param>
+            <param name="allowedProperties">An array containing all properties which are allowed to be changed by JSON Patch.</param>
+        </member>
+        <member name="M:JsonPatch.Restrict.JsonPatchDocumentExtensions.TryApplyToWithRestrictions(Microsoft.AspNetCore.JsonPatch.JsonPatchDocument,System.Object,Microsoft.AspNetCore.JsonPatch.JsonPatchError@,System.String[])">
+            <summary>
+            Applies the <see cref="T:Microsoft.AspNetCore.JsonPatch.JsonPatchDocument"/> to the provided object, only allowing changes to the provided property.
+            </summary>
+            <param name="document">The patch to apply.</param>
+            <param name="objectToApplyTo">The object to apply the patch to.</param>
+            <param name="error">The error encountered while applying, <see langword="null"/> if none.</param>
+            <returns><see langword="true"/>, if successfully applied patch otherwise <see langword="false"/>.</returns>
+            <param name="allowedProperties">An array containing all properties which are allowed to be changed by JSON Patch.</param>
+        </member>
+        <member name="M:JsonPatch.Restrict.JsonPatchDocumentExtensions.ApplyToWithRestrictions``1(Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{``0},``0,System.String[])">
+            <summary>
+            Applies the <see cref="T:Microsoft.AspNetCore.JsonPatch.JsonPatchDocument"/> to the provided object, only allowing changes to the provided property.
+            </summary>
+            <typeparam name="T">The type of the model to which the JSON Patch should be applied to.</typeparam>
+            <param name="document">The patch to apply.</param>
+            <param name="objectToApplyTo">The object to apply the patch to.</param>
+            <param name="allowedProperties">An array containing all properties which are allowed to be changed by JSON Patch.</param>
+        </member>
+        <member name="M:JsonPatch.Restrict.JsonPatchDocumentExtensions.ApplyToWithRestrictions``1(Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{``0},``0,System.Action{Microsoft.AspNetCore.JsonPatch.JsonPatchError},System.String[])">
+            <summary>
+            Applies the <see cref="T:Microsoft.AspNetCore.JsonPatch.JsonPatchDocument"/> to the provided object, only allowing changes to the provided property.
+            </summary>
+            <typeparam name="T">The type of the model to which the JSON Patch should be applied to.</typeparam>
+            <param name="document">The patch to apply.</param>
+            <param name="objectToApplyTo">The object to apply the patch to.</param>
+            <param name="logErrorAction">An action to handle logging any errors.</param>
+            <param name="allowedProperties">An array containing all properties which are allowed to be changed by JSON Patch.</param>
+        </member>
+        <member name="M:JsonPatch.Restrict.JsonPatchDocumentExtensions.TryApplyToWithRestrictions``1(Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{``0},``0,Microsoft.AspNetCore.JsonPatch.JsonPatchError@,System.String[])">
+            <summary>
+            Applies the <see cref="T:Microsoft.AspNetCore.JsonPatch.JsonPatchDocument"/> to the provided object, only allowing changes to the provided property.
+            </summary>
+            <typeparam name="T">The type of the model to which the JSON Patch should be applied to.</typeparam>
+            <param name="document">The patch to apply.</param>
+            <param name="objectToApplyTo">The object to apply the patch to.</param>
+            <param name="error">The error encountered while applying, <see langword="null"/> if none.</param>
+            <param name="allowedProperties">An array containing all properties which are allowed to be changed by JSON Patch.</param>
+            <returns><see langword="true"/>, if successfully applied patch otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="T:JsonPatch.Restrict.RestrictableObjectAdapter">
+            <summary>
+            An implementation of <see cref="T:Microsoft.AspNetCore.JsonPatch.Adapters.IObjectAdapter"/> that restricts the modification of specific properties
+            before allowing a patch operation to write to a property.
+            </summary>
+        </member>
+        <member name="M:JsonPatch.Restrict.RestrictableObjectAdapter.#ctor(Newtonsoft.Json.Serialization.IContractResolver,System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:JsonPatch.Restrict.RestrictableObjectAdapter"/> class.
+            </summary>
+            <param name="contractResolver">The <see cref="T:Newtonsoft.Json.Serialization.IContractResolver" />.</param>
+            <param name="allowedProperties">A <see cref="T:System.Collections.Generic.HashSet`1"/> containing all properties which are allowed to be changed by JSON Patch.</param>
+        </member>
+        <member name="M:JsonPatch.Restrict.RestrictableObjectAdapter.#ctor(Newtonsoft.Json.Serialization.IContractResolver,System.Collections.Generic.HashSet{System.String},System.Action{Microsoft.AspNetCore.JsonPatch.JsonPatchError})">
+            <summary>
+            Initializes a new instance of the <see cref="T:JsonPatch.Restrict.RestrictableObjectAdapter"/> class.
+            </summary>
+            <param name="contractResolver">The <see cref="T:Newtonsoft.Json.Serialization.IContractResolver" />.</param>
+            <param name="allowedProperties">A <see cref="T:System.Collections.Generic.HashSet`1"/> containing all properties which are allowed to be changed by JSON Patch.</param>
+            <param name="logErrorAction">The <see cref="T:System.Action" /> for logging a <see cref="T:Microsoft.AspNetCore.JsonPatch.JsonPatchError" />.</param>
+        </member>
+        <member name="T:JsonPatch.Restrict.RestrictableObjectAdapterFactory">
+            <summary>
+            An implementation of <see cref="T:Microsoft.AspNetCore.JsonPatch.Adapters.AdapterFactory"/> replaces the standard <see cref="T:Microsoft.AspNetCore.JsonPatch.Internal.PocoAdapter"/> with a <see cref="T:JsonPatch.Restrict.RestrictableObjectAdapter"/>.
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.JsonPatch.Adapters.AdapterFactory" />
+        </member>
+        <member name="M:JsonPatch.Restrict.RestrictableObjectAdapterFactory.#ctor(System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:JsonPatch.Restrict.RestrictableObjectAdapterFactory"/> class.
+            </summary>
+            <param name="allowedProperties">A <see cref="T:System.Collections.Generic.HashSet`1"/> containing all properties which are allowed to be changed by JSON Patch.</param>
+        </member>
+        <member name="M:JsonPatch.Restrict.RestrictableObjectAdapterFactory.Create(System.Object,Newtonsoft.Json.Serialization.IContractResolver)">
+            <inheritdoc />
+        </member>
+        <member name="T:JsonPatch.Restrict.RestrictablePocoAdapter">
+            <summary>
+            An implementation of <see cref="T:Microsoft.AspNetCore.JsonPatch.Internal.PocoAdapter"/> that checks against a set of properties to determine if a property is writable or not.
+            </summary>
+        </member>
+        <member name="M:JsonPatch.Restrict.RestrictablePocoAdapter.#ctor(System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:JsonPatch.Restrict.RestrictablePocoAdapter"/> class.
+            </summary>
+            <param name="allowedProperties">A <see cref="T:System.Collections.Generic.HashSet`1"/> containing all properties which are allowed to be changed by JSON Patch.</param>
+        </member>
+        <member name="M:JsonPatch.Restrict.RestrictablePocoAdapter.TryGetJsonProperty(System.Object,Newtonsoft.Json.Serialization.IContractResolver,System.String,Newtonsoft.Json.Serialization.JsonProperty@)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>
