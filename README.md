@@ -1,4 +1,4 @@
-# StringyEnums
+# JsonPatch.Restrict
 
 <a href="https://www.nuget.org/packages/JsonPatch.Restrict"><img alt="Nuget" src="https://img.shields.io/nuget/v/JsonPatch.Restrict"></a> <a href="https://www.nuget.org/packages/JsonPatch.Restrict"><img alt="Nuget" src="https://img.shields.io/nuget/dt/JsonPatch.Restrict"></a> <a href="https://github.com/TwentyFourMinutes/JsonPatch.Restrict/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/TwentyFourMinutes/JsonPatch.Restrict"></a> <a href="https://github.com/TwentyFourMinutes/JsonPatch.Restrict/blob/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/TwentyFourMinutes/JsonPatch.Restrict"></a> <a href="https://discordapp.com/invite/EYKxkce"><img alt="Discord" src="https://discordapp.com/api/guilds/275377268728135680/widget.png"></a>
 
